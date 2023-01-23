@@ -5,6 +5,7 @@ def go_dependencies():
         name = "com_github_google_gopacket",
         build_file_proto_mode = "disable_global",
         importpath = "github.com/google/gopacket",
+        patch_args = ["-p1"], # keep
         patches = ["//third_party/com_github_google_gopacket:2022_04_09_prebuilt_libpcap.patch"],  # keep
         sum = "h1:ves8RnFZPGiFnTS0uPQStjwru6uO6h+nlr9j6fL7kF8=",
         version = "v1.1.19",

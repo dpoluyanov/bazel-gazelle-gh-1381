@@ -1,6 +1,8 @@
---- pcap/BUILD.bazel      2022-04-09 21:14:18.000000000 +0300
-+++ pcap/BUILD.bazel      2022-04-09 21:14:10.000000000 +0300
-@@ -10,37 +10,38 @@
+diff --git a/pcap/BUILD.bazel b/pcap/BUILD.bazel
+index f375b70..9cb8349 100644
+--- a/pcap/BUILD.bazel	
++++ b/pcap/BUILD.bazel
+@@ -10,37 +10,38 @@ go_library(
          "pcap_unix.go",
          "pcap_windows.go",
      ],
