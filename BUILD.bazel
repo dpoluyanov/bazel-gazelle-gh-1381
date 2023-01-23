@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix workspace
+# gazelle:build_file_name	BUILD,BUILD.bazel
+# gazelle:exclude bazel-*/
+gazelle(
+    name = "gazelle",
+)
+
+# bazel run //:gazelle-update-repos
+gazelle(
+    name = "gazelle-update-repos",
+    args = [
+        "-from_file=go.mod",
+        "-to_macro=go_dependencies.bzl%go_dependencies",
+        "-prune",
+        "-build_file_proto_mode=disable_global",
+    ],
+    command = "update-repos",
+)
+
+go_library(
+    name = "workspace",
+    srcs = ["main.go"],
+    importpath = "workspace",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_google_gopacket//pcap"],
+)

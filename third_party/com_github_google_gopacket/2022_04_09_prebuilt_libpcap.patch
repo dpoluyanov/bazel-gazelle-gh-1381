@@ -1,0 +1,71 @@
+--- pcap/BUILD.bazel      2022-04-09 21:14:18.000000000 +0300
++++ pcap/BUILD.bazel      2022-04-09 21:14:10.000000000 +0300
+@@ -10,37 +10,38 @@
+         "pcap_unix.go",
+         "pcap_windows.go",
+     ],
++    cdeps = ["@libpcap//:libpcap"],
+     cgo = True,
+-    clinkopts = select({
+-        "@io_bazel_rules_go//go/platform:android": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:darwin": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:dragonfly": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:freebsd": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:ios": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:linux": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:netbsd": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:openbsd": [
+-            "-lpcap",
+-        ],
+-        "@io_bazel_rules_go//go/platform:solaris": [
+-            "-L /opt/local/lib -lpcap",
+-        ],
+-        "//conditions:default": [],
+-    }),
++#    clinkopts = select({
++#        "@io_bazel_rules_go//go/platform:android": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:darwin": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:dragonfly": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:freebsd": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:ios": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:linux": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:netbsd": [
++#            "-lpcap",
++#        ],
++#        "@io_bazel_rules_go//go/platform:openbsd": [
++#            "-lpcap",
++#       ],
++#        "@io_bazel_rules_go//go/platform:solaris": [
++#            "-L /opt/local/lib -lpcap",
++#        ],
++#       "//conditions:default": [],
++#    }),
+     importpath = "github.com/google/gopacket/pcap",
+     visibility = ["//visibility:public"],
+     deps = [
